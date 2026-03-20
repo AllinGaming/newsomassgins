@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.DS_Store
+
+# Local env files
+.env
+.env.local
+.env.*.local
+
+# Ignore scripts and all its files
+scripts/

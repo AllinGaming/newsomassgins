@@ -1,0 +1,837 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg: #0e1016;
+  --panel: #161a23;
+  --panel-strong: #11151f;
+  --panel-alt: #1f2431;
+  --line: #2b3242;
+  --text: #ffffff;
+  --muted: #b2b9c6;
+  --accent: #5c7cfa;
+  --accent-2: #ffd166;
+  --danger: #b23a48;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(circle at top, #161c2c, #0b0d12 55%, #08090d 100%);
+  color: var(--text);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  padding: 12px 16px;
+  background: rgba(10, 12, 18, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  z-index: 10;
+}
+
+.nav-row,
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  font-family: Oswald, sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #e6ecff;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+}
+
+.char-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon-btn {
+  min-width: 44px;
+  padding: 8px 10px;
+  line-height: 1;
+}
+
+.select {
+  background: #0f1117;
+  color: #e8e3d5;
+  border-style: solid;
+  border-width: 6px;
+  border-image-source: url("https://warcraftcn.com/warcraftcn/input-frame.webp");
+  border-image-slice: 16 fill;
+  border-image-repeat: stretch;
+  border-radius: 8px;
+  padding: 6px 28px 6px 12px;
+  font-size: 13px;
+  min-width: 140px;
+  appearance: none;
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+}
+
+.boss-dropdown {
+  min-width: 180px;
+  justify-content: center;
+  text-transform: none;
+}
+
+.boss-dropdown-content {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.input {
+  width: 100%;
+}
+
+.search-row .input {
+  max-width: 520px;
+}
+
+.avatar-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+.char-menu {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  top: 46px;
+  right: 0;
+  background: #1a1f2b;
+  border: 1px solid #2b3242;
+  border-radius: 10px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 20;
+}
+
+.menu-item {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background: #252c3b;
+}
+
+.content {
+  padding: 16px;
+}
+
+.boss-grid {
+  display: grid;
+  grid-template-columns: minmax(240px, 360px) 1fr;
+  gap: 16px;
+}
+
+.boss-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.boss-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hit-card,
+.table-card {
+  width: 100%;
+}
+
+/* Inner content padding so text stays inside ornate borders */
+.card-inner {
+  padding: 20px 14px;
+}
+
+.table-card[data-size="sm"] .card-inner,
+.note-card[data-size="sm"] .card-inner,
+.summary[data-size="sm"] .card-inner,
+.boss-card[data-size="sm"] .card-inner,
+.hit-card[data-size="sm"] .card-inner,
+.assign-card[data-size="sm"] .card-inner,
+.modal[data-size="sm"] .card-inner,
+.note[data-size="sm"] .card-inner {
+  padding: 18px 12px;
+}
+
+.card-inner > *:first-child {
+  margin-top: 0;
+}
+
+.boss-card {
+  text-align: center;
+}
+
+.boss-image {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 8px;
+}
+
+.boss-avatar {
+  max-width: 200px;
+}
+
+.boss-name {
+  font-family: Oswald, sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summary-text {
+  color: #e8ebf2;
+  margin-bottom: 6px;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.note {
+  border: 1px solid #5c7cfa;
+}
+
+.note-title {
+  font-weight: 800;
+  color: #9bb5ff;
+}
+
+.note-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.note-item {
+  display: flex;
+  gap: 8px;
+  color: #f1f4ff;
+}
+
+.note-item .bullet {
+  color: var(--accent);
+}
+
+.action-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tab-panel {
+  margin-top: 12px;
+}
+
+.tables {
+  width: 100%;
+}
+
+.table-card {
+  min-width: 0;
+}
+
+.list-card {
+  border-image-source: url("https://warcraftcn.com/warcraftcn/dropdown-menu-bg.webp") !important;
+  border-width: 20px !important;
+  border-image-slice: 20 fill !important;
+  max-width: 360px;
+  width: 100%;
+  justify-self: center;
+}
+
+.list-card .table-title {
+  text-align: center;
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+.list-card .table {
+  width: 92%;
+  margin: 0 auto;
+}
+
+.list-card .table th,
+.list-card .table td {
+  text-align: center;
+}
+
+.tab-meta {
+  margin-bottom: 10px;
+}
+
+
+.tables {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.tables > * {
+  align-self: start;
+}
+
+.table-title {
+  font-weight: 700;
+  margin: 10px 0 10px;
+  text-align: center;
+  letter-spacing: 0.4px;
+}
+
+.table-caption {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.table th {
+  text-align: left;
+  background: var(--panel-alt);
+  padding: 8px 10px;
+  color: #fff;
+}
+
+.table td {
+  background: #141822;
+  padding: 8px 10px;
+  color: #d6d9e4;
+  border-top: 1px solid #202637;
+}
+
+.table td.hit {
+  color: var(--accent-2);
+  font-weight: 700;
+}
+
+.section-title {
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hit-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.hit-section {
+  color: #cfd6e6;
+  font-weight: 600;
+}
+
+.hit-row {
+  padding: 12px;
+  background: #1a1f2b;
+  border-radius: 8px;
+}
+
+.hit-row-text {
+  font-weight: 600;
+}
+
+.hit-detail {
+  color: var(--muted);
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.pill {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #222735;
+  font-weight: 700;
+}
+
+.pill.primary {
+  color: #fff;
+}
+
+.pill.secondary {
+  color: #e3e6f0;
+  background: #1e2533;
+}
+
+.pill.warn {
+  color: var(--accent-2);
+  background: #3b2a15;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #2b3242;
+}
+
+.loading {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: grid;
+  place-items: center;
+  z-index: 50;
+}
+
+.modal {
+  width: min(420px, 90vw);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal.bottom {
+  width: min(520px, 90vw);
+}
+
+.modal-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.role-group {
+  gap: 12px;
+}
+
+.role-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.modal.bottom .modal-title {
+  text-align: center;
+}
+
+.modal.bottom .list {
+  align-items: center;
+}
+
+.modal.bottom .list-item {
+  width: 100%;
+  max-width: 360px;
+  justify-content: center;
+  text-align: center;
+}
+
+.modal.bottom .card-inner > .modal-title,
+.modal.bottom .card-inner > .list,
+.modal.bottom .card-inner > .modal-actions {
+  justify-content: center;
+  text-align: center;
+}
+
+.modal.bottom .card-inner > .modal-actions {
+  justify-content: center;
+}
+
+.modal.bottom .list-item > div {
+  width: 100%;
+  text-align: center;
+}
+
+.modal.bottom .list-item .check {
+  position: absolute;
+  right: 18px;
+}
+
+.modal.bottom .modal-actions > button {
+  margin: 0 auto;
+}
+
+.add-character-btn {
+  margin: 0 auto;
+  display: block;
+  min-width: 200px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px !important;
+  min-height: 56px;
+}
+
+.list-title {
+  font-weight: 700;
+}
+
+.list-sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.check {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+
+.page {
+  min-height: 100vh;
+  padding: 20px 16px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.page-title {
+  font-weight: 800;
+  font-size: 18px;
+  font-family: "Cinzel", serif;
+}
+
+.back-btn {
+  min-width: 120px;
+  justify-content: center;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.assignments {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.assign-row {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 12px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  border: 1px solid #fff;
+}
+
+.timeline .line {
+  flex: 1;
+  width: 3px;
+  background: #2b3041;
+  margin-top: 6px;
+  border-radius: 2px;
+}
+
+.timeline .line.end {
+  background: transparent;
+}
+
+.assign-card {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.table-card .table {
+  font-size: 12px;
+}
+
+.table-card .table th,
+.table-card .table td {
+  padding: 6px 8px;
+  vertical-align: top;
+}
+
+.assign-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.assign-detail {
+  margin-top: 8px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.notes-grid > * {
+  align-self: start;
+}
+
+.note-card {
+  background: transparent;
+}
+
+.note-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.note-count {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.notes-textarea {
+  min-height: 140px;
+  width: 100%;
+}
+
+.notes-pagination {
+  margin-top: 16px;
+}
+
+.empty {
+  color: var(--muted);
+  padding: 24px 0;
+}
+
+@media (max-width: 1020px) {
+  .boss-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .boss-image {
+    width: 160px;
+    height: 160px;
+  }
+
+  .tables {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 10px 12px;
+  }
+
+  .nav-row,
+  .search-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nav-controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .boss-dropdown {
+    min-width: 160px;
+  }
+
+  .content {
+    padding: 12px;
+  }
+
+  .boss-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  .tables {
+    grid-template-columns: 1fr;
+  }
+
+  .card-inner {
+    padding: 16px 12px;
+  }
+
+  .page {
+    padding: 16px 12px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .page-title {
+    text-align: center;
+  }
+
+  .back-btn {
+    width: 100%;
+  }
+
+  .notes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .list {
+    max-height: 220px;
+  }
+
+  .list-item {
+    max-width: 100%;
+  }
+
+  .add-character-btn {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .icon-btn {
+    min-width: 40px;
+    padding: 6px 8px;
+  }
+
+  .boss-dropdown {
+    min-width: 140px;
+  }
+
+  .table {
+    font-size: 12px;
+  }
+}
