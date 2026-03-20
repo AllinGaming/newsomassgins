@@ -133,6 +133,11 @@ function notesForContains(notes, keyPart, extraPart) {
   return collected;
 }
 
+function assetUrl(path) {
+  const normalized = path.replace(/^\/+/, '');
+  return `${import.meta.env.BASE_URL}${normalized}`;
+}
+
 function buildGnarlmoon(rows, notes) {
   const left = [];
   const right = [];
@@ -202,7 +207,7 @@ function buildGnarlmoon(rows, notes) {
         ? [{ title: 'Kara notes', items: notesFor(notes, 'gnarlmoon') }]
         : [])
     ],
-    imageAsset: '/assets/gnarlmoon.png',
+    imageAsset: assetUrl('assets/gnarlmoon.png'),
     extraImages: []
   };
 }
@@ -286,7 +291,7 @@ function buildAnomalus(rows, notes) {
         ? [{ title: 'Kara notes', items: notesFor(notes, 'anomalus') }]
         : [])
     ],
-    imageAsset: '/assets/anomalus.png',
+    imageAsset: assetUrl('assets/anomalus.png'),
     extraImages: []
   };
 }
@@ -388,7 +393,7 @@ function buildChess(rows, notes) {
         ? [{ title: 'Kara notes', items: notesFor(notes, 'chess') }]
         : [])
     ],
-    imageAsset: '/assets/chess.png',
+    imageAsset: assetUrl('assets/chess.png'),
     extraImages: []
   };
 }
@@ -433,7 +438,7 @@ function buildSanv(rows, notes) {
         ? [{ title: 'Kara notes', items: notesFor(notes, 'sanv') }]
         : [])
     ],
-    imageAsset: '/assets/sanv.png',
+    imageAsset: assetUrl('assets/sanv.png'),
     extraImages: []
   };
 }
@@ -531,8 +536,8 @@ function buildRupturan(rows, notes) {
         ? [{ title: 'Preparation', items: notesForContains(notes, 'rupturan', 'prep') }]
         : [])
     ],
-    imageAsset: '/assets/rupturan.png',
-    extraImages: ['/assets/ruptp1.png', '/assets/ruptp2.png']
+    imageAsset: assetUrl('assets/rupturan.png'),
+    extraImages: [assetUrl('assets/ruptp1.png'), assetUrl('assets/ruptp2.png')]
   });
 
   const colIndex = (rowIndex, label) => {
@@ -701,8 +706,8 @@ function buildRupturan(rows, notes) {
         ? [{ title: 'Preparation', items: notesForContains(notes, 'rupturan', 'prep') }]
         : [])
     ],
-    imageAsset: '/assets/rupturan.png',
-    extraImages: ['/assets/ruptp1.png', '/assets/ruptp2.png']
+    imageAsset: assetUrl('assets/rupturan.png'),
+    extraImages: [assetUrl('assets/ruptp1.png'), assetUrl('assets/ruptp2.png')]
   };
 }
 
@@ -798,7 +803,7 @@ function buildKruul(rows, notes) {
         ? [{ title: 'Kara notes', items: notesFor(notes, 'kruul') }]
         : [])
     ],
-    imageAsset: '/assets/kruul.png',
+    imageAsset: assetUrl('assets/kruul.png'),
     extraImages: []
   };
 }
@@ -825,7 +830,7 @@ function buildMeph(rows, notes) {
         ? [{ title: 'Kara notes', items: notesFor(notes, 'mephistroth') }]
         : [])
     ],
-    imageAsset: '/assets/mephistroth.png',
+    imageAsset: assetUrl('assets/mephistroth.png'),
     extraImages: []
   });
 
@@ -990,7 +995,7 @@ function buildMeph(rows, notes) {
         ? [{ title: 'Kara notes', items: notesFor(notes, 'mephistroth') }]
         : [])
     ],
-    imageAsset: '/assets/mephistroth.png',
+    imageAsset: assetUrl('assets/mephistroth.png'),
     extraImages: []
   };
 }
@@ -1037,7 +1042,7 @@ function buildLeyWatcher(rows, notes) {
         ? [{ title: 'Trash', items: notesForContains(notes, 'incantagos', 'trash') }]
         : [])
     ],
-    imageAsset: '/assets/leywatcher.png',
+    imageAsset: assetUrl('assets/leywatcher.png'),
     extraImages: []
   };
 }
@@ -1185,7 +1190,7 @@ function buildEcho(rows, notes) {
         ? [{ title: 'Preparation', items: notesForContains(notes, 'echo of medivh', 'prep') }]
         : [])
     ],
-    imageAsset: '/assets/echo.png',
+    imageAsset: assetUrl('assets/echo.png'),
     extraImages: []
   };
 }
@@ -1231,9 +1236,9 @@ function buildGeneric(name, rows, notes) {
 
 function assetForGeneric(name) {
   const lower = name.toLowerCase();
-  if (lower.includes('ley-watcher')) return '/assets/leywatcher.png';
-  if (lower.includes('echo')) return '/assets/echo.png';
-  return '/assets/anomalus.png';
+  if (lower.includes('ley-watcher')) return assetUrl('assets/leywatcher.png');
+  if (lower.includes('echo')) return assetUrl('assets/echo.png');
+  return assetUrl('assets/anomalus.png');
 }
 
 export { buildGeneric };
